@@ -1,0 +1,58 @@
+{
+    "name": "calderawp/caldera-anti-spam-client",
+    "description": "PHP Client for Caldera anti-spam app",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@gitlab.com:caldera-labs/caldera-interop.git"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "psr/http-message": "^1.0@dev",
+        "calderawp/caldera-interop": "^0.4",
+        "awurth/slim-validation": "^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "php-coveralls/php-coveralls": "^2.0@dev",
+        "squizlabs/php_codesniffer": "3.*",
+        "friendsofphp/php-cs-fixer": "^2.9",
+        "jakub-onderka/php-parallel-lint": "dev-master",
+        "jakub-onderka/php-console-highlighter": "dev-master"
+    },
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Josh Pollock",
+            "email": "josh@calderawp.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "calderawp\\AntiSpamClient\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "calderawp\\AntiSpamClient\\Tests\\": "tests/"
+        }
+    },
+    "scripts" : {
+        "tests" : "composer fixes && composer sniffs && composer lints && composer test",
+        "test" : "phpunit --coverage-clover coverage/clover.xml",
+        "test-now" : "phpunit --group=now",
+        "sniffs" : "composer sniff && composer sniff tests",
+        "fixes" : "composer fix && composer fix-tests",
+        "sniff" : "phpcs --standard=PSR2 src/",
+        "sniff-tests" : "phpcs --standard=PSR2 tests/",
+        "fix" : "php-cs-fixer fix src/",
+        "fix-tests" : "php-cs-fixer fix tests/",
+        "lints" : "composer lint && composer lint-tests",
+        "lint" : "parallel-lint ./src  --blame --exclude vendor",
+        "lint-tests" : "parallel-lint ./tests  --blame --exclude vendor ",
+        "tests-now": "phpunit Tests --group=now"
+    }
+}
