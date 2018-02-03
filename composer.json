@@ -3,7 +3,7 @@
     "description": "PHP Client for Caldera anti-spam app",
     "repositories": [],
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "guzzlehttp/guzzle": "^6.3",
         "psr/http-message": "^1.0@dev",
         "calderawp/caldera-interop": "^0.4",
