@@ -23,12 +23,12 @@ trait HelpsTestContent
      * @param Response|null $nextResponse
      * @return ContainerInterface
      */
-    protected function getContainer( Response $nextResponse = null )
+    protected function getContainer(Response $nextResponse = null)
     {
         $container = new class extends Container implements ContainerInterface {
             public function get($id)
             {
-                if( $this->offsetExists($id)){
+                if ($this->offsetExists($id)) {
                     return $this->offsetGet($id);
                 }
             }
@@ -38,7 +38,7 @@ trait HelpsTestContent
                 return $this->offsetExists($id);
             }
         };
-        $container[ Client::CONTAINERKEY ] = $this->getClient(200,null,$nextResponse);
+        $container[ Client::CONTAINERKEY ] = $this->getClient(200, null, $nextResponse);
         return $container;
     }
     /**
@@ -85,7 +85,7 @@ trait HelpsTestContent
 
         if (! $nextResponse) {
             $nextResponse = [new Response($status, [], $body)];
-        }else{
+        } else {
             $nextResponse = [$nextResponse];
         }
 

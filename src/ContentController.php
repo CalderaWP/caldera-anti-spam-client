@@ -18,7 +18,7 @@ abstract class ContentController
      * ContentController constructor.
      * @param ContainerInterface $appContainer
      */
-    public function __construct(ContainerInterface $appContainer )
+    public function __construct(ContainerInterface $appContainer)
     {
         $this->appContainer = $appContainer;
     }
@@ -28,7 +28,7 @@ abstract class ContentController
      */
     public function getClient()
     {
-        return $this->appContainer->get( 'contentClient' );
+        return $this->appContainer->get('contentClient');
     }
 
     /**
