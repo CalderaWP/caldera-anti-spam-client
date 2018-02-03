@@ -3,6 +3,7 @@
 
 namespace calderawp\AntiSpamClient\Tests;
 
+use calderawp\AntiSpamClient\Client;
 use calderawp\AntiSpamClient\Content;
 use calderawp\AntiSpamClient\ContentController;
 use calderawp\AntiSpamClient\Request;
@@ -10,6 +11,7 @@ use calderawp\AntiSpamClient\Response;
 
 class ContentControllerTest extends TestCase
 {
+
     /**
      * Test spammy request
      *
@@ -19,7 +21,7 @@ class ContentControllerTest extends TestCase
     public function testSpamRequest()
     {
         $entity = $this->contentEntityFactory();
-        $controller = new SpamMockController($this->getClient(200));
+        $controller = new SpamMockController($this->getContainer());
         $response = $controller->check($entity->toRequest($controller->getClient()));
         $responseArrayed = $response->toArray();
         $this->assertArrayHasKey('allow', $responseArrayed);
@@ -35,7 +37,7 @@ class ContentControllerTest extends TestCase
     public function testNotSpammyRequest()
     {
         $entity = $this->contentEntityFactory();
-        $controller = new NotSpamMockController($this->getClient(200));
+        $controller = new NotSpamMockController($this->getContainer());
         $response = $controller->check($entity->toRequest($controller->getClient()));
         $responseArrayed = $response->toArray();
         $this->assertArrayHasKey('allow', $responseArrayed);
@@ -54,7 +56,7 @@ class ContentControllerTest extends TestCase
         $args = $this->contentRequestArgs();
         $args[ 'type' ] = 'pants';
         $entity = Content::fromArray($args);
-        $controller = new NotSpamMockController($this->getClient(200));
+        $controller = new NotSpamMockController($this->getContainer());
 
         $response = $controller->check($entity->toRequest($controller->getClient()));
         $this->assertSame(421, $response->getStatusCode());

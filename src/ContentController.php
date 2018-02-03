@@ -3,23 +3,24 @@
 
 namespace calderawp\AntiSpamClient;
 
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\RequestInterface;
 
 abstract class ContentController
 {
 
     /**
-     * @var Client
+     * @var ContainerInterface
      */
-    protected $client;
+    protected $appContainer;
 
     /**
      * ContentController constructor.
-     * @param Client $client
+     * @param ContainerInterface $appContainer
      */
-    public function __construct(Client $client)
+    public function __construct(ContainerInterface $appContainer )
     {
-        $this->client = $client;
+        $this->appContainer = $appContainer;
     }
 
     /**
@@ -27,7 +28,7 @@ abstract class ContentController
      */
     public function getClient()
     {
-        return $this->client;
+        return $this->appContainer->get( 'contentClient' );
     }
 
     /**

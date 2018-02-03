@@ -17,6 +17,12 @@ use Psr\Http\Message\ResponseInterface;
 class Client
 {
 
+    /**
+     * Key to use as container index
+     *
+     * @const string
+     */
+    const CONTAINERKEY = 'contentClient';
     /** @var string */
     const APIVER = '1';
     /** @var string */

@@ -6,9 +6,41 @@ namespace calderawp\AntiSpamClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client as Guzzle;
+use Pimple\Container;
+use Psr\Container\ContainerInterface;
 
 trait HelpsTestContent
 {
+
+    /**
+     * @var ContainerInterface
+     */
+    private $appContainer;
+
+    /**
+     * Create a container for testing content controller with
+     *
+     * @param Response|null $nextResponse
+     * @return ContainerInterface
+     */
+    protected function getContainer( Response $nextResponse = null )
+    {
+        $container = new class extends Container implements ContainerInterface {
+            public function get($id)
+            {
+                if( $this->offsetExists($id)){
+                    return $this->offsetGet($id);
+                }
+            }
+
+            public function has($id)
+            {
+                return $this->offsetExists($id);
+            }
+        };
+        $container[ Client::CONTAINERKEY ] = $this->getClient(200,null,$nextResponse);
+        return $container;
+    }
     /**
      * Create request args
      *

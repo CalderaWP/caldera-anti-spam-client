@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "17bebba794f3a66812c324438e53fa78",
+    "content-hash": "c0677bee4d8593260011cd66e0720e2f",
     "packages": [
         {
             "name": "awurth/slim-validation",
@@ -63,11 +63,17 @@
         },
         {
             "name": "calderawp/caldera-interop",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
-                "url": "git@gitlab.com:caldera-labs/caldera-interop.git",
-                "reference": "7bf3729039235e955015c23155547c1dc570b86c"
+                "url": "https://github.com/CalderaWP/caldera-interop.git",
+                "reference": "e27f54f4b93b5e6d972c8d4969e9bf1226d0e85c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CalderaWP/caldera-interop/zipball/e27f54f4b93b5e6d972c8d4969e9bf1226d0e85c",
+                "reference": "e27f54f4b93b5e6d972c8d4969e9bf1226d0e85c",
+                "shasum": ""
             },
             "require": {
                 "netrivet/wp-event-emitter": "dev-master",
@@ -88,14 +94,7 @@
                     "src/functions.php"
                 ]
             },
-            "scripts": {
-                "tests": [
-                    "phpunit Tests"
-                ],
-                "tests-now": [
-                    "phpunit Tests --group=now"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPLv2+"
             ],
@@ -105,7 +104,7 @@
                     "email": "josh@calderawp.com"
                 }
             ],
-            "time": "2017-12-30T06:13:38+00:00"
+            "time": "2018-02-03T02:06:18+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -711,12 +710,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "ccb1edc4f9522b64f73a30c334bdcd13ec3b2d6e"
+                "reference": "ed470564de9f536d186955b98ee827663d7ab483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/ccb1edc4f9522b64f73a30c334bdcd13ec3b2d6e",
-                "reference": "ccb1edc4f9522b64f73a30c334bdcd13ec3b2d6e",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/ed470564de9f536d186955b98ee827663d7ab483",
+                "reference": "ed470564de9f536d186955b98ee827663d7ab483",
                 "shasum": ""
             },
             "require": {
@@ -771,7 +770,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2018-02-03T17:43:33+00:00"
+            "time": "2018-02-03T21:27:07+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -2660,7 +2659,7 @@
         },
         {
             "name": "sebastian/version",
-            "version": "dev-master",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
@@ -2673,7 +2672,7 @@
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": ">=5.6"
             },
             "type": "library",
             "extra": {
@@ -3467,7 +3466,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0"
+        "php": "^7.1"
     },
     "platform-dev": []
 }

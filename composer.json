@@ -7,7 +7,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "psr/http-message": "^1.0@dev",
         "calderawp/caldera-interop": "^0.4",
-        "awurth/slim-validation": "^3.0"
+        "awurth/slim-validation": "^3.0",
+        "psr/container" : "1.0.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~6.0",
