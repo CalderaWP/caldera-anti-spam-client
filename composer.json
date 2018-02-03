@@ -1,12 +1,7 @@
 {
     "name": "calderawp/caldera-anti-spam-client",
     "description": "PHP Client for Caldera anti-spam app",
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@gitlab.com:caldera-labs/caldera-interop.git"
-        }
-    ],
+    "repositories": [],
     "require": {
         "php": "^7.0",
         "guzzlehttp/guzzle": "^6.3",
