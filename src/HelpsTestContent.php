@@ -85,6 +85,8 @@ trait HelpsTestContent
 
         if (! $nextResponse) {
             $nextResponse = [new Response($status, [], $body)];
+        }else{
+            $nextResponse = [$nextResponse];
         }
 
         $mock = new MockHandler($nextResponse);
