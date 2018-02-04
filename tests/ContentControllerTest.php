@@ -21,7 +21,7 @@ class ContentControllerTest extends TestCase
     public function testSpamRequest()
     {
         $entity = $this->contentEntityFactory();
-        $controller = new SpamMockController($this->getContainer());
+        $controller = new SpamMockController($this->getContainer(Response::isSpamResponse()));
         $response = $controller->check($entity->toRequest($controller->getClient()));
         $responseArrayed = $response->toArray();
         $this->assertArrayHasKey('allow', $responseArrayed);
@@ -37,7 +37,7 @@ class ContentControllerTest extends TestCase
     public function testNotSpammyRequest()
     {
         $entity = $this->contentEntityFactory();
-        $controller = new NotSpamMockController($this->getContainer());
+        $controller = new NotSpamMockController($this->getContainer(Response::notSpamResponse()));
         $response = $controller->check($entity->toRequest($controller->getClient()));
         $responseArrayed = $response->toArray();
         $this->assertArrayHasKey('allow', $responseArrayed);
@@ -56,7 +56,7 @@ class ContentControllerTest extends TestCase
         $args = $this->contentRequestArgs();
         $args[ 'type' ] = 'pants';
         $entity = Content::fromArray($args);
-        $controller = new NotSpamMockController($this->getContainer());
+        $controller = new NotSpamMockController($this->getContainer(Response::invalidRequestResponse([])));
 
         $response = $controller->check($entity->toRequest($controller->getClient()));
         $this->assertSame(421, $response->getStatusCode());

@@ -6,7 +6,7 @@
         "php": "^7.1",
         "guzzlehttp/guzzle": "^6.3",
         "psr/http-message": "^1.0@dev",
-        "calderawp/caldera-interop": "^0.4",
+        "calderawp/caldera-interop": "^0.5",
         "awurth/slim-validation": "^3.0",
         "psr/container" : "1.0.0"
     },
