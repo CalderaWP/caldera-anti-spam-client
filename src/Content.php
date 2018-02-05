@@ -82,6 +82,14 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
      */
     protected $valid;
 
+
+    /**
+     * Content of submission to check
+     *
+     * @var string
+     */
+    protected $content;
+
     /**
      * Get submitter name
      *
@@ -284,13 +292,14 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
             'url' => V::notEmpty()->addRule(V::url()),
             'site_url' => $this->requiredUrl(),
             'ip' =>V::notEmpty()->addRule(V::ip()),
-            'user_agent' => V::stringType()->addRule(V::notEmpty()),
+            'user_agent' => $this->requiredString(),
             'referrer' => $this->requiredUrl(),
             'type' => V::in(['contact-form', 'signup', 'message', 'blog-post', 'reply', 'comment']),
             'email' => V::notEmpty()->addRule(V::email()),
             'name' => V::notEmpty()->addRule(V::stringType()),
             'fail' => V::optional(V::boolType()),
             'lang' => V::stringType(),
+            'content' =>  $this->requiredString(),
             //these settings make it allways pass
             'is_test' => V::optional(V::boolType()),
         ];
@@ -304,5 +313,13 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
     protected function requiredUrl()
     {
         return V::notEmpty()->addRule(v::url());
+    }
+
+    /**
+     * @return V
+     */
+    protected function requiredString()
+    {
+        return V::stringType()->addRule(V::notEmpty(), V::notBlank() );
     }
 }

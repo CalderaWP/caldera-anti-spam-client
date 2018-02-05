@@ -305,6 +305,27 @@ class ContentEntityTest extends TestCase
         $this->assertEquals($entity->email, $entityArray['email']);
         $submitter = EmailSender::fromArray($entityArray['submitter']);
         $this->assertEquals($entity->getSubmitter(), $submitter);
+        $this->assertEquals($entity->getSubmitter(), $submitter);
         $this->assertEquals($entity->getSubmitter()->toArray(), $entityArray['submitter']);
+    }
+
+    /**
+     * Test validation scenarios
+     *
+     * @covers Content::rules()
+     * @covers Content::requiredUrl
+     */
+    public function testValidation()
+    {
+        $entity = Content::fromArray($this->contentRequestArgs());
+        $this->assertTrue( $entity->isValid() );
+        $args = $this->contentRequestArgs();
+        $entity = Content::fromArray($this->contentRequestArgs());
+        unset( $args[ 'url' ] );
+        $this->assertFalse( $entity->isValid() );
+        $entity = Content::fromArray($this->contentRequestArgs());
+        unset( $args[ 'user_agent' ] );
+        $this->assertFalse( $entity->isValid() );
+
     }
 }

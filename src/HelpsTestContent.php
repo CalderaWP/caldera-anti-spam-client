@@ -62,7 +62,8 @@ trait HelpsTestContent
                 'email' => 'akismet-guaranteed-spam@example.com',
             ],
             'is_test' => true,
-            'lang' => 'en'
+            'lang' => 'en',
+            'content' => 'spammy'
 
         ], $args);
     }
