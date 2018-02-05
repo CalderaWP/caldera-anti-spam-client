@@ -344,5 +344,10 @@ class ContentEntityTest extends TestCase
         $entity = Content::fromArray($args);
         $this->assertFalse( $entity->isValid() );
 
+        $args = $this->contentRequestArgs();
+        $args[ 'ip' ] = '2601:4c1:8201:9a40:3dcd:8624:fe4c:aa48';
+        $entity = Content::fromArray($args);
+        $this->assertTrue( $entity->isValid() );
+
     }
 }
