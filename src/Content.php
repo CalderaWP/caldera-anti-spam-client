@@ -8,6 +8,7 @@ use calderawp\interop\Entities\EmailSender;
 use calderawp\interop\Interfaces\Interoperable;
 use calderawp\interop\Traits\CanRecursivelyCastArray;
 use Psr\Http\Message\RequestInterface;
+use Respect\Validation\Rules\BoolType;
 use Respect\Validation\Validator as V;
 use Respect\Validation\Validator;
 
@@ -327,14 +328,14 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
         return [
             'url' => V::notEmpty()->addRule(V::url()),
             'site_url' => $this->requiredUrl(),
-            'ip' =>V::notEmpty()->addRule(V::ip()),
+            'ip' => V::ip()->notEmpty(),
             'user_agent' => $this->requiredString(),
             'referrer' => $this->requiredUrl(),
-            'type' => V::in(['contact-form', 'signup', 'message', 'blog-post', 'reply', 'comment']),
-            'email' => V::notEmpty()->addRule(V::email()),
-            'name' => V::notEmpty()->addRule(V::stringType()),
-            'fail' => V::optional(V::boolType()),
-            'lang' => V::stringType(),
+            'type' =>  V::in(['contact-form', 'signup', 'message', 'blog-post', 'reply', 'comment'])->notEmpty(),
+            'email' => $this->requiredString(),
+            'name' =>  $this->requiredString(),
+            'fail' =>   V::optional(V::boolType() ),
+            'lang' => V::optional(V::stringType() ),
             'content' =>  $this->requiredString(),
             //these settings make it allways pass
             'is_test' => V::optional(V::boolType()),
