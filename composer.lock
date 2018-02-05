@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0677bee4d8593260011cd66e0720e2f",
+    "content-hash": "708a4e4781631a18594bc8cac51dff58",
     "packages": [
         {
             "name": "awurth/slim-validation",
@@ -63,16 +63,16 @@
         },
         {
             "name": "calderawp/caldera-interop",
-            "version": "0.4.2",
+            "version": "0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CalderaWP/caldera-interop.git",
-                "reference": "e27f54f4b93b5e6d972c8d4969e9bf1226d0e85c"
+                "reference": "3c4edfa91ae74644aa2afb437734afce88a8dcf0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CalderaWP/caldera-interop/zipball/e27f54f4b93b5e6d972c8d4969e9bf1226d0e85c",
-                "reference": "e27f54f4b93b5e6d972c8d4969e9bf1226d0e85c",
+                "url": "https://api.github.com/repos/CalderaWP/caldera-interop/zipball/3c4edfa91ae74644aa2afb437734afce88a8dcf0",
+                "reference": "3c4edfa91ae74644aa2afb437734afce88a8dcf0",
                 "shasum": ""
             },
             "require": {
@@ -104,7 +104,7 @@
                     "email": "josh@calderawp.com"
                 }
             ],
-            "time": "2018-02-03T02:06:18+00:00"
+            "time": "2018-02-04T00:17:46+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -421,16 +421,16 @@
         },
         {
             "name": "psr/container",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "2cc4a01788191489dc7459446ba832fa79a216a7"
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/2cc4a01788191489dc7459446ba832fa79a216a7",
-                "reference": "2cc4a01788191489dc7459446ba832fa79a216a7",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
                 "shasum": ""
             },
             "require": {
@@ -466,7 +466,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-06-28T15:35:32+00:00"
+            "time": "2017-02-14T16:28:37+00:00"
         },
         {
             "name": "psr/http-message",
