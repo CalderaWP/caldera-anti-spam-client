@@ -163,8 +163,10 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
     /** @inheritdoc */
     public static function fromArray(array $items)
     {
+
         /** @var Content $obj */
         $obj = parent::fromArray($items);
+
         if (!empty($items['name'])) {
             $obj->setName($items['name']);
         }
@@ -280,7 +282,41 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
     /** @inheritdoc */
     public function isValid()
     {
-        return $this->validate()->isValid();
+        return $this->checkRequired() && $this->validate()->isValid();
+    }
+
+    /**
+     * Check if all required fields are present
+     *
+     * @return bool
+     */
+    public function checkRequired()
+    {
+        foreach ( $this->getRequiredProps() as $prop ){
+            if( empty( $this->$prop ) ){
+                return false;
+            }
+        }
+
+        if( empty( $this->submitter ) || empty( $this->submitter->email ) ){
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @return array
+     */
+    protected function getRequiredProps()
+    {
+        return [
+            'url',
+            'site_url',
+            'referrer',
+            'user_agent',
+            'content'
+        ];
     }
 
     /***
@@ -312,7 +348,7 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
      */
     protected function requiredUrl()
     {
-        return V::notEmpty()->addRule(v::url());
+        return V::url()->notEmpty()->notBlank();
     }
 
     /**
@@ -320,6 +356,6 @@ class Content extends \calderawp\interop\Entities\Entity implements CanBeValidat
      */
     protected function requiredString()
     {
-        return V::stringType()->addRule(V::notEmpty(), V::notBlank() );
+        return V::stringType()->notBlank()->notEmpty();
     }
 }

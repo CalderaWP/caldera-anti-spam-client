@@ -6,6 +6,7 @@ namespace calderawp\AntiSpamClient\Tests;
 use calderawp\AntiSpamClient\Content;
 use calderawp\AntiSpamClient\Entity;
 use calderawp\interop\Entities\EmailSender;
+use Respect\Validation\Validator;
 
 class ContentEntityTest extends TestCase
 {
@@ -309,6 +310,8 @@ class ContentEntityTest extends TestCase
         $this->assertEquals($entity->getSubmitter()->toArray(), $entityArray['submitter']);
     }
 
+
+
     /**
      * Test validation scenarios
      *
@@ -319,12 +322,26 @@ class ContentEntityTest extends TestCase
     {
         $entity = Content::fromArray($this->contentRequestArgs());
         $this->assertTrue( $entity->isValid() );
+
+        $this->assertFalse( Validator::stringType()->notBlank()->notEmpty()->validate(''));
+        $this->assertFalse( Validator::stringType()->notBlank()->notEmpty()->validate(''));
+        $this->assertTrue( Validator::stringType()->notBlank()->notEmpty()->validate('aaa'));
+        $this->assertFalse( Validator::url()->notEmpty()->notBlank()->validate(''));
+        $this->assertTrue( Validator::url()->notEmpty()->notBlank()->validate('https://google.com'));
+
+
         $args = $this->contentRequestArgs();
-        $entity = Content::fromArray($this->contentRequestArgs());
+        unset( $args[ 'user_agent' ] );
+        $entity = Content::fromArray($args);
+        $this->assertFalse( $entity->isValid() );
+
+        $args = $this->contentRequestArgs();
         unset( $args[ 'url' ] );
         $this->assertFalse( $entity->isValid() );
-        $entity = Content::fromArray($this->contentRequestArgs());
-        unset( $args[ 'user_agent' ] );
+
+        $args = $this->contentRequestArgs();
+        unset( $args[ 'content' ] );
+        $entity = Content::fromArray($args);
         $this->assertFalse( $entity->isValid() );
 
     }

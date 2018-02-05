@@ -75,12 +75,18 @@ abstract class ContentController
     abstract public function entityIsNotSpam(Content $entity);
 
     /**
+     * Covert entity to request
+     *
+     * JOSH: This method seems dumb,
+     * don't remove it or change it to protected
+     * or anti-spam tests will not work.
+     *
      * @param RequestInterface $request
      * @return Content|static
      */
-    protected function entityFromRequest(RequestInterface $request)
+    public function entityFromRequest(RequestInterface $request)
     {
-        $entity = Content::fromRequest($request);
-        return $entity;
+        return Content::fromRequest($request);
+
     }
 }
